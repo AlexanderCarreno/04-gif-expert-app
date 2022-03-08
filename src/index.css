@@ -5,3 +5,9 @@
 body {
     padding: 30px;
 }
+
+input {
+    color:green;
+    font-size: 1.2rem;
+    width: 100%;
+}
