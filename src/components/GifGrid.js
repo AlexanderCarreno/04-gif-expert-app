@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import { getGifs } from '../helpers/getGifs';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 import { GifGridItem } from './GifGridItem';
 
 export const GifGrid = ( {category} ) => {
   
 
-  const [images, setImages] = useState([]);
+  //const [images, setImages] = useState([]);
+  //useEffect( () => {
+  //  getGifs( category )
+  //    .then( imgs => {
+  //      //setImages( imgs );
+  //      setImages
+  //    });
+  //}, [ category ]);
 
 
-  useEffect( () => {
-    getGifs();
-  }, []);
 
+  const { data:images, loading } = useFetchGifs( category );
 
-  const getGifs = async() => {
-    const url = 'https://api.giphy.com/v1/gifs/search?q=My Hero Academia&limit=10&api_key=VZ9fX9swY5PguRHtBhfSdBuHVdc551EF';
-    const resp = await fetch( url );
-    const { data } = await resp.json();
-
-    const gifs = data.map( img => {
-      return {
-        id: img.id,
-        title: img.title,
-        url: img.images.downsized_medium.url
-      }
-    })
-
-    console.log(gifs);
-    setImages( gifs );
-    
-  }
 
 /*
   return (
@@ -47,8 +37,11 @@ export const GifGrid = ( {category} ) => {
 
   return (
     <>
-      <h3>{ category }</h3>
-      <ol>
+      <h3 className='animate__animated animate__fadeIn animate__delay-1s'>{ category }</h3>
+      { /*loading ? <p>Loading</p> : null*/ }
+      { loading && <p className='animate__animated animate__flash'>Loading</p> }
+
+      <div className='card-grid'>
         {
           images.map( img => ( 
             <GifGridItem 
@@ -57,7 +50,23 @@ export const GifGrid = ( {category} ) => {
             />
           ))
         }
-      </ol>
+      </div>
+    
+      {/*
+
+      <div className='card-grid'>
+        <ol>
+          {
+            images.map( img => ( 
+              <GifGridItem 
+                key={ img.id }
+                { ...img }
+              />
+            ))
+          }
+        </ol>
+      </div>*/
+      }
     </>
   )
 }
