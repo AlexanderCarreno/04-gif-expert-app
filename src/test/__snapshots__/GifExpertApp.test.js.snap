@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`debe mostrar el componente <GitExpertApp /> correctamente debe de mostrar una lista de categorias 1`] = `
+<Fragment>
+  <h2>
+    GitExpertApp
+  </h2>
+  <AddCategory
+    setCategories={[Function]}
+  />
+  <hr />
+  <ol>
+    <GifGrid
+      category="One Punch"
+      key="One Punch"
+    />
+    <GifGrid
+      category="Dragon Ball"
+      key="Dragon Ball"
+    />
+  </ol>
+</Fragment>
+`;
+
+exports[`debe mostrar el componente <GitExpertApp /> correctamente debe mostrar <GitExpertApp /> corractamente 1`] = `
+<Fragment>
+  <h2>
+    GitExpertApp
+  </h2>
+  <AddCategory
+    setCategories={[Function]}
+  />
+  <hr />
+  <ol />
+</Fragment>
+`;

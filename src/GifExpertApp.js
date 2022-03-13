@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { AddCategory } from './components/AddCategory';
 import { GifGrid } from './components/GifGrid';
 
-const GitExpertApp = ({}) => {
-    const [categories, setCategories] = useState(['My Hero Academia']);
+const GitExpertApp = ({ defaultCategories = [] }) => {
+    const [categories, setCategories] = useState( defaultCategories );
 
     /*const handleAdd = () => {
         //const newElement = ['My Hero Academia'];
